@@ -11,11 +11,16 @@ export const Movies = () => {
         <div className="container grid grid-4-col">
           {movies.map((movie) => {
             const { imdbID, Title, Poster } = movie;
+            const movieName = Title.substring(0, 15);
             return (
               <NavLink to={`movie/${imdbID}`} key={imdbID}>
                 <div className="card">
                   <div className="card-info">
-                    <h2>{Title}</h2>
+                    {movieName.length >= 15 ? (
+                      <h2>{movieName}...</h2>
+                    ) : (
+                      <h2>{movieName}</h2>
+                    )}
                     <img src={Poster} alt={Title} />
                   </div>
                 </div>
